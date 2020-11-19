@@ -70,8 +70,8 @@ class MailFragment : Fragment(R.layout.fragment_mail) {
     private fun sortMessage(error: Throwable) {
         error.message?.let {
             if(it.contains("Username and Password not accepted")){
-                showToast("Rejected credentials")
-                val msg = "Process Obstructed: Grant app access to send mail from your google account settings"
+                showToast(it)
+                val msg = "App needs your google account consent. Please refer to your google account settings"
                 snackBar = showSnackBar(msg){
                     //visit website or navigate user to settings
                     snackBar?.dismiss()

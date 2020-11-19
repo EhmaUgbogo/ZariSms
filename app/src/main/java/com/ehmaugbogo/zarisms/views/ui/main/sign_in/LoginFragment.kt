@@ -32,7 +32,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sign_in_button.setSize(SignInButton.SIZE_WIDE) //SIZE_STANDARD
+        sign_in_button.setSize(SignInButton.SIZE_WIDE) //SIZE_WIDE
         sign_in_button.setOnClickListener { signIn() }
 
     }
