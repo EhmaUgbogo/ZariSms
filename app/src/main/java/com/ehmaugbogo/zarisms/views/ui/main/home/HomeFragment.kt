@@ -1,19 +1,18 @@
-package com.ehmaugbogo.zarisms.views.ui.main
+package com.ehmaugbogo.zarisms.views.ui.main.home
 
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.widget.ImageView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import com.ehmaugbogo.zarisms.R
+import com.ehmaugbogo.zarisms.util.load
 import com.ehmaugbogo.zarisms.util.navigateTo
-import com.ehmaugbogo.zarisms.util.setMainTitle
 import com.ehmaugbogo.zarisms.util.showToast
-import com.ehmaugbogo.zarisms.views.ui.MailFragment
-import kotlinx.android.synthetic.main.fragment_main.*
+import com.ehmaugbogo.zarisms.util.showView
+import com.ehmaugbogo.zarisms.views.ui.main.sign_in.UserStore
+import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
  * @author .: Ehma Ugbogo
@@ -21,25 +20,33 @@ import kotlinx.android.synthetic.main.fragment_main.*
  * @created : 2020-11-17
  */
 
-class MainFragment : Fragment(R.layout.fragment_main) {
+class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().setMainTitle(getString(R.string.dash_board))
 
         main_recycler.adapter = MainAdapter {
             if (it.destination == 0) {
                 showToast("Feature not currently available");return@MainAdapter
             }
 
-            requireActivity().navigateTo(it.destination)
+            navigateTo(it.destination)
             // findNavController().navigate(it.destination)
         }
 
+        setProfileImage()
         Handler().postDelayed({
             progressBar.isVisible = false
         }, 600)
 
+    }
+
+    private fun setProfileImage() {
+        val photoUrl = UserStore.storeUser.photoUrl
+        val profileImg = requireActivity().findViewById<ImageView>(R.id.profile_img)
+
+        if (photoUrl.isEmpty()) showView(false, profileImg)
+        else showView(true, profileImg).also { profileImg.load(requireContext(), photoUrl) }
     }
 
 

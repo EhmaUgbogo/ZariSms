@@ -6,11 +6,12 @@
     android:id="@+id/materialCardView2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
     app:cardCornerRadius="25dp"
     app:cardElevation="25dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:context=".views.ui.MailFragment">
 
@@ -21,7 +22,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
-            android:text="Please provide your email details"
+            android:text="Please Provide Credentials"
             android:textSize="20sp"
             android:fontFamily="sans-serif-black"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +45,7 @@
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <EditText
             android:id="@+id/my_mail_password"
@@ -70,16 +71,29 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
-            android:backgroundTint="@android:color/white"
+            android:backgroundTint="@color/colorPrimary"
             android:paddingTop="18dp"
             android:paddingBottom="18dp"
             android:text="@string/proceed"
             android:textAllCaps="false"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/my_mail_password"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/my_mail_password"
-            app:layout_constraintTop_toBottomOf="@+id/my_mail_password" />
+            app:layout_constraintTop_toBottomOf="@+id/my_mail_password"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This specify where mail is sent from"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

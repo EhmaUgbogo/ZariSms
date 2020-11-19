@@ -1,13 +1,20 @@
 package com.ehmaugbogo.zarisms.util
 
 import android.app.Activity
+import android.content.Context
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.EditText
-import android.widget.TextView
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.Target
 import com.ehmaugbogo.zarisms.R
+import com.ehmaugbogo.zarisms.views.ui.main.sign_in.UserStore
 import com.google.android.material.snackbar.Snackbar
+
 
 /**
  * @author .: Ehma Ugbogo
@@ -25,18 +32,28 @@ fun Activity.showSnackBar(msg: String) {
     Snackbar.make(findViewById(android.R.id.content), msg, Snackbar.LENGTH_SHORT).show()
 }
 
-fun Fragment.showSnackBar(msg: String, actionText: String = "Ok",
-                          duration: Int = Snackbar.LENGTH_INDEFINITE,execute: (view: View) -> Unit)
+fun Fragment.showSnackBar(
+    msg: String, actionText: String = "Ok",
+    duration: Int = Snackbar.LENGTH_INDEFINITE, execute: (view: View) -> Unit
+)
 : Snackbar{
     return Snackbar.make(view!!, msg, duration)
         .setAction(actionText, execute).apply { show() }
 }
 
+//EditText
+fun EditText.content() = this.text.toString().trim()
 
-fun Activity.setMainTitle(msg: String) {
-    findViewById<TextView>(R.id.nav_textView).text = msg
+//ImageView
+fun ImageView.load(context: Context, uri: String) {
+    Glide.with(context).load(uri)
+        //.placeholder(R.drawable.profile_pic)
+        .into(this)
 }
 
-fun EditText.content(): String {
-    return this.text.toString().trim()
+fun showView(show: Boolean = true, vararg views: View){
+    views.forEach { it.isVisible = show }
 }
+
+//User
+val Fragment.appUser get() = UserStore.storeUser

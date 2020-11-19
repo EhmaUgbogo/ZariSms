@@ -47,7 +47,7 @@ class MailFragment : Fragment(R.layout.fragment_mail) {
             }.show()
         }
 
-        observeMailContext()
+        observeMailContent()
     }
 
     private fun sendMail(title: String, body: String, email: String) {
@@ -83,13 +83,14 @@ class MailFragment : Fragment(R.layout.fragment_mail) {
         }
     }
 
-    private fun observeMailContext() {
+    private fun observeMailContent() {
         mail_details.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                mail_details_counter.text = "$count/160"
+                val counter = s?.length ?: 0
+                mail_details_counter.text = "$counter/160"
             }
         })
     }
@@ -99,7 +100,7 @@ class MailFragment : Fragment(R.layout.fragment_mail) {
             showToast("Mail title is required"); return false
         }
         if (!isValidName(mail_details.content())) {
-            showToast("Mail title is required"); return false
+            showToast("Mail require a body"); return false
         }
         if (!isValidEmail(mail_destination.content())) {
             showToast("Recipient email required"); return false

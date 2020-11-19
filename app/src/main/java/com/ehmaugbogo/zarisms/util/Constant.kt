@@ -1,5 +1,7 @@
 package com.ehmaugbogo.zarisms.util
 
+import com.pixplicity.easyprefs.library.Prefs
+
 /**
  * @author .: Ehma Ugbogo
  * @email ..: ehmaugbogo@gmail.com
@@ -18,8 +20,16 @@ object Constant{
     const val LIVE_CHAT = "LIVE CHAT & SUPPORT"
     const val ABOUT_US = "ABOUT US"
 
+    //Credentials
     const val EMAIL = "EMAIL"
     const val PASSWORD = "PASSWORD"
+
+    //Create User
+    const val ID = "Id"
+    const val ID_TOKEN = "idToken"
+    const val DISPLAY_NAME = "displayName"
+    const val FAMILY_NAME = "familyName"
+    const val PHOTO_URL = "photoUrl"
 
 
 

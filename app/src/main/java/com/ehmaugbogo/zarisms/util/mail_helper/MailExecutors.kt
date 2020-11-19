@@ -95,4 +95,9 @@ object AppUserMailCredentials {
     var password: String
         get() = Prefs.getString(PASSWORD, "")
         set(value) = Prefs.putString(PASSWORD, value)
+
+    fun deactivate() {
+        email = ""
+        password = ""
+    }
 }

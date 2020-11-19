@@ -6,9 +6,10 @@ package com.ehmaugbogo.zarisms.model
  * @created : 2020-11-17
  */
 
-data class MainItem(
+data class HomeItem(
     val title: String,
     val desc: String = "",
     val icon: Int,
-    val destination: Int
+    val destination: Int,
+    val pageTitle: String = "",
 )
